@@ -74,9 +74,3 @@ def get_my_notes(user_id):
     return rows
 
 
-"""
-init_db(): 기존엔 import database만 해도 테이블 생성이 실행됐어요. 이제는 create_app()에서 명시적으로 database.init_db()를 호출할 때만 실행됩니다. 이렇게 하면 나중에 "이 모듈 언제 뭘 실행하는지" 추적이 쉬워져요.
-register_user: generate_password_hash(user_pw)가 비밀번호를 단방향 해시로 바꿔줍니다. 원본 비밀번호는 어디에도 저장 안 되고, DB엔 해시값만 들어가요.
-check_login: 기존엔 WHERE id=? AND pw=?로 평문 비교했는데, 이제 pw는 해시값이라 평문 비교가 불가능해요. 그래서 먼저 id로만 유저를 찾고, check_password_hash(저장된_해시, 입력한_평문)로 검증합니다. 이 함수가 내부적으로 같은 방식으로 해싱해서 비교해줘요.
-"""
-
