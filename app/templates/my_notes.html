@@ -15,6 +15,7 @@
         <li class="list-group-item">
             <strong>[{{ note[3] }}]</strong> {{ note[2] }} — {{ note[4] }}
             <small class="text-muted">({{ note[5] }})</small>
+            <a href="{{ url_for('notes.export_note', note_id=note[0]) }}" class="btn btn-sm btn-outline-secondary">MD로 내보내기</a>
         </li>
         {% endfor %}
     </ul>

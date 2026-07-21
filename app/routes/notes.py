@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from app import database
 
+from flask import Response
+from app.utils.md import note_to_markdown
+
 notes_bp = Blueprint('notes', __name__)
 
 @notes_bp.route('/note') # 노트 페이지
@@ -33,3 +36,13 @@ def show_my_notes(): # 내 노트 페이지 함수
 
 
     return render_template('my_notes.html', notes=user_notes, user=current_user) # XSS 방지 부분 # # 내 노트 리스트에 위에서 선언 해뒀던 현재 유저와 현재 유저의 노트 같이 렌더링
+
+@notes_bp.route('/note/<int:note_id>/export')
+def export_note(note_id):
+    note = database.get_note_by_id(note_id)
+    md_content = note_to_markdown(note)
+    return Response(
+        md_content,
+        mimetype='text/markdown',
+        headers={'Content-Disposition': f'attachment; filename=note_{note_id}.md'}
+    )

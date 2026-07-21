@@ -73,4 +73,10 @@ def get_my_notes(user_id):
     conn.close()
     return rows
 
-
+def get_note_by_id(note_id):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM notes WHERE idx = ?", (note_id,))
+    row = cursor.fetchone()
+    conn.close()
+    return row
