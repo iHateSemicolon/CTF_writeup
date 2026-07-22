@@ -26,6 +26,21 @@
 
 ---
 
+## 📌 TODO / Roadmap (추후 계획)
+[x] 세션 기반 인증 및 비밀번호 해싱 (auth)
+
+[x] 오답노트 작성 및 조회 기능 (notes)
+
+[x] 작성한 오답노트 .md 내보내기 기능
+
+[ ] 회원가입 성공 시 템플릿 렌더링 및 UI 리팩토링
+
+[ ] GitHub OAuth 연동
+
+[ ] 작성한 Writeup을 지정한 GitHub 레포지토리로 자동 Commit/Push 기능
+
+---
+
 ## 📂 Project Structure (프로젝트 구조)
 
 ```text
@@ -50,3 +65,6 @@ CRN/
 ├── .env                     # 환경변수 (SECRET_KEY 등)
 ├── .gitignore
 └── README.md
+
+
+
