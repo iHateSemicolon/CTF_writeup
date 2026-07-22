@@ -65,6 +65,3 @@ CRN/
 ├── .env                     # 환경변수 (SECRET_KEY 등)
 ├── .gitignore
 └── README.md
-
-
-
