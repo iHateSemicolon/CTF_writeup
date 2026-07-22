@@ -2,7 +2,7 @@
 # CRN (CTF Rapid Note)
 
 > **Fast, Safe, and Markdown-based CTF Writeup Management System**
-> CTF 문제를 풀며 작성하는 빠른 로컬 저장 및 마크다운 기반의 오답노트 웹 애플리케이션입니다.
+>  CTF 문제를 풀며 작성하는 빠른 로컬 저장 및 마크다운 기반의 오답노트 웹 애플리케이션입니다.
 
 ---
 
