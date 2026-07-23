@@ -3,6 +3,7 @@ from app import database
 
 from flask import Response
 from app.utils.md import note_to_markdown
+from app.utils.github import push_to_github
 
 notes_bp = Blueprint('notes', __name__)
 
@@ -46,3 +47,11 @@ def export_note(note_id):
         mimetype='text/markdown',
         headers={'Content-Disposition': f'attachment; filename=note_{note_id}.md'}
     )
+
+
+
+@notes_bp.route('/note/<int:note_id>/push_github', methods=['POST'])
+def push_github(note_id):
+    note = database.get_note_by_id(note_id)
+    success = push_to_github(note)
+    return redirect(url_for('notes.show_my_notes'))
