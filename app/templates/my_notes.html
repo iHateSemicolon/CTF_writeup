@@ -10,28 +10,23 @@
     <h2>{{ user }}님의 오답노트 목록</h2>
 
     {% if notes %}
-    <ul class="list-group">
-        {% for note in notes %}
-        <li class="list-group-item">
-            <strong>[{{ note[3] }}]</strong> {{ note[2] }} — {{ note[4] }}
-            <small class="text-muted">({{ note[5] }})</small>
-            <a href="{{ url_for('notes.export_note', note_id=note[0]) }}" class="btn btn-sm btn-outline-secondary">MD로 내보내기</a>
-        </li>
-        <li class="list-group-item">
-    <strong>[{{ note[3] }}]</strong> {{ note[2] }} — {{ note[4] }}
-    <small class="text-muted">({{ note[5] }})</small>
-    <a href="{{ url_for('notes.export_note', note_id=note[0]) }}" class="btn btn-sm btn-outline-secondary">MD로 내보내기</a>
+<ul class="list-group">
+    {% for note in notes %}
+    <li class="list-group-item">
+        <strong>[{{ note[3] }}]</strong> {{ note[2] }} — {{ note[4] }}
+        <small class="text-muted">({{ note[5] }})</small>
+        <a href="{{ url_for('notes.export_note', note_id=note[0]) }}" class="btn btn-sm btn-outline-secondary">MD로 내보내기</a>
 
-    <form action="{{ url_for('notes.push_github', note_id=note[0]) }}" method="POST" style="display:inline;">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <button type="submit" class="btn btn-sm btn-outline-dark">GitHub에 푸시</button>
-    </form>
-</li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>아직 작성한 노트가 없습니다.</p>
-    {% endif %}
+        <form action="{{ url_for('notes.push_github', note_id=note[0]) }}" method="POST" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-sm btn-outline-dark">GitHub에 푸시</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>아직 작성한 노트가 없습니다.</p>
+{% endif %}
 
     <a href="{{ url_for('notes.note_page') }}" class="btn btn-primary mt-3">노트 하나 더 쓰기</a>
 </div>
